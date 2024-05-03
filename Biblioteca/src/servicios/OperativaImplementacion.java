@@ -1,6 +1,6 @@
 package servicios;
 
-import java.sql.Date;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -11,7 +11,12 @@ import dtos.bibliotecaDto;
 
 public class OperativaImplementacion implements OperativaInterfaz{
 
+	
 	public void AltaCliente(List<ClienteDto> listaClientes, List<bibliotecaDto> listaAntigua) {
+		
+		try {
+			
+		
 		
 		ClienteDto clienteN = new ClienteDto();
 		
@@ -31,8 +36,28 @@ public class OperativaImplementacion implements OperativaInterfaz{
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		
-			
-		 
+		System.out.println("DNI:");
+		String dni = sc.next();
+		
+		System.out.println("Correo electrónico:");
+		String correo = sc.next();
+		
+		for(ClienteDto cliente : listaClientes) {
+			clienteN.setBibliotecaId(cliente.getBibliotecaId());
+		}
+		
+		listaClientes.add(clienteN);
+		 } catch (Exception e) {
+			// TODO: handle exception
+			 System.out.println("Error al añadir el cliente " + e.getMessage());
+		}
 		
 	}
+	
+	public void pedidoCliente(List<ClienteDto> listaClientes, List<bibliotecaDto> listaAntigua) {
+		
+		
+		
+	}
+	
 }
